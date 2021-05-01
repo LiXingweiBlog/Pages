@@ -1,0 +1,691 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/Pages/img/profile.jpg">
+  <link rel="icon" href="/Pages/img/profile.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="编程路上的记录">
+  <meta name="author" content="长理小生">
+  <meta name="keywords" content="编程">
+  
+  <title>Linux系统（ubuntu）常用命令 - 长理小生</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/Pages/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/Pages/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lixingweiblog.github.io","root":"/Pages/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"pRpRjan9BBxQaky0Ju0Xe0i3-gzGzoHsz","app_key":"MIECgEde4A36Vmp0KxL2TMkl","server_url":"https://prprjan9.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/Pages/js/utils.js" ></script>
+  <script  src="/Pages/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/Pages/">&nbsp;<strong>长理小生</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/Pages/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Linux系统（ubuntu）常用命令">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      长理小生
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-30 11:43" pubdate>
+        2020年11月30日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux系统（ubuntu）常用命令</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：1 小时前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>本文所有命令均在ubuntu上正常操作，命令只包括一些常用的快速上手的命令，适合初学者查看。</p>
+<h1 id="一、文件和目录操作"><a href="#一、文件和目录操作" class="headerlink" title="一、文件和目录操作"></a>一、文件和目录操作</h1><h2 id="1-cd-home-进入-home-目录"><a href="#1-cd-home-进入-home-目录" class="headerlink" title="1.cd /home    进入 /home 目录"></a>1.cd /home    进入 /home 目录</h2><pre><code>cd /home
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130112524395.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="2-cd-返回当前目录的上一级目录"><a href="#2-cd-返回当前目录的上一级目录" class="headerlink" title="2.cd ..        返回当前目录的上一级目录"></a>2.cd ..        返回当前目录的上一级目录</h2><pre><code>cd ..
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113146381.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="3-cd-返回当前目录的上两级"><a href="#3-cd-返回当前目录的上两级" class="headerlink" title="3.cd ../..        返回当前目录的上两级"></a>3.cd ../..        返回当前目录的上两级</h2><pre><code>cd ../..
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113154386.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="4-cd-进入当前用户的主目录"><a href="#4-cd-进入当前用户的主目录" class="headerlink" title="4.cd    进入当前用户的主目录"></a>4.cd    进入当前用户的主目录</h2><pre><code>cd
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/2020113011321189.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="5-cd-username-进入username用户的主目录"><a href="#5-cd-username-进入username用户的主目录" class="headerlink" title="5.cd ~username    进入username用户的主目录"></a>5.cd ~username    进入username用户的主目录</h2><pre><code>cd ~username
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113224498.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="6-cd-返回上次所在的目录"><a href="#6-cd-返回上次所在的目录" class="headerlink" title="6.cd -    返回上次所在的目录"></a>6.cd -    返回上次所在的目录</h2><pre><code>cd -
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113235506.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="7-pwd-显示当前工作路径"><a href="#7-pwd-显示当前工作路径" class="headerlink" title="7.pwd        显示当前工作路径"></a>7.pwd        显示当前工作路径</h2><pre><code>pwd
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113242650.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="8-ls-显示当前目录的文件"><a href="#8-ls-显示当前目录的文件" class="headerlink" title="8.ls    显示当前目录的文件"></a>8.ls    显示当前目录的文件</h2><pre><code>ls
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/2020113011325255.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="9-ls-F-显示当前目录的文件"><a href="#9-ls-F-显示当前目录的文件" class="headerlink" title="9.ls -F        显示当前目录的文件"></a>9.ls -F        显示当前目录的文件</h2><pre><code>ls -F
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113301761.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="10-ls-l-显示当前目录下的所有文件及详细信息"><a href="#10-ls-l-显示当前目录下的所有文件及详细信息" class="headerlink" title="10.ls -l        显示当前目录下的所有文件及详细信息"></a>10.ls -l        显示当前目录下的所有文件及详细信息</h2><pre><code>ls -l
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113311147.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMjg5NzEx,size_16,color_FFFFFF,t_70" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="11-ls-a-将隐藏文件一同显示出来"><a href="#11-ls-a-将隐藏文件一同显示出来" class="headerlink" title="11.ls -a    将隐藏文件一同显示出来"></a>11.ls -a    将隐藏文件一同显示出来</h2><pre><code>ls -a
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/2020113011333474.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="12-mkdir-dir1-新建一个dir1文件夹"><a href="#12-mkdir-dir1-新建一个dir1文件夹" class="headerlink" title="12.mkdir dir1        新建一个dir1文件夹"></a>12.mkdir dir1        新建一个dir1文件夹</h2><pre><code>mkdir dir1
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113345904.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="13-mkdir-dir1-dir2-新建两个文件夹，也可以新建3-4…个"><a href="#13-mkdir-dir1-dir2-新建两个文件夹，也可以新建3-4…个" class="headerlink" title="13.mkdir dir1 dir2        新建两个文件夹，也可以新建3,4…个"></a>13.mkdir dir1 dir2        新建两个文件夹，也可以新建3,4…个</h2><pre><code>mkdir dir1 dir2
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113356733.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="14-rmdir-dir1-删除dir1文件夹"><a href="#14-rmdir-dir1-删除dir1文件夹" class="headerlink" title="14.rmdir dir1        删除dir1文件夹"></a>14.rmdir dir1        删除dir1文件夹</h2><pre><code>rmdir dir1
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113405112.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="15-rm-rf-dir1-删除dir1文件夹及其里面的内容"><a href="#15-rm-rf-dir1-删除dir1文件夹及其里面的内容" class="headerlink" title="15.rm -rf dir1        删除dir1文件夹及其里面的内容"></a>15.rm -rf dir1        删除dir1文件夹及其里面的内容</h2><pre><code>rm -rf dir1
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113418664.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="16-mv-dir1-new-dir-将dir1移动到new-dir处，并重命名为new-dir"><a href="#16-mv-dir1-new-dir-将dir1移动到new-dir处，并重命名为new-dir" class="headerlink" title="16.mv dir1 new_dir        将dir1移动到new_dir处，并重命名为new_dir"></a>16.mv dir1 new_dir        将dir1移动到new_dir处，并重命名为new_dir</h2><pre><code>mv dir1 new_dir
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113426562.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="17-touch-file-txt-在当前目录新建一个file-txt文件"><a href="#17-touch-file-txt-在当前目录新建一个file-txt文件" class="headerlink" title="17.touch file.txt            在当前目录新建一个file.txt文件"></a>17.touch file.txt            在当前目录新建一个file.txt文件</h2><pre><code>touch file.txt
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113433271.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="18-cp-file-new-file-将file文件复制，然后另存为new-file"><a href="#18-cp-file-new-file-将file文件复制，然后另存为new-file" class="headerlink" title="18.cp file new_file    将file文件复制，然后另存为new_file"></a>18.cp file new_file    将file文件复制，然后另存为new_file</h2><pre><code>cp file new_file
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113442156.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="19-cp-r-dir1-new-dir2-将dir1及其子目录复制并另存为new-dir2"><a href="#19-cp-r-dir1-new-dir2-将dir1及其子目录复制并另存为new-dir2" class="headerlink" title="19.cp -r dir1 new_dir2        将dir1及其子目录复制并另存为new_dir2"></a>19.cp -r dir1 new_dir2        将dir1及其子目录复制并另存为new_dir2</h2><pre><code>    cp -r dir1 new_dir2
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113453758.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="20-ln-s-file1-link1-创建一个指向文件或文件夹-目录-file1的软链接link1，相当于快捷方式"><a href="#20-ln-s-file1-link1-创建一个指向文件或文件夹-目录-file1的软链接link1，相当于快捷方式" class="headerlink" title="20.ln -s file1 link1     创建一个指向文件或文件夹(目录)file1的软链接link1，相当于快捷方式"></a>20.ln -s file1 link1     创建一个指向文件或文件夹(目录)file1的软链接link1，相当于快捷方式</h2><pre><code>ln -s file1 link1
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113505448.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="21-ln-file1-link1-创建一个硬链接link1指向file1，注意：不允许将硬链接指向目录"><a href="#21-ln-file1-link1-创建一个硬链接link1指向file1，注意：不允许将硬链接指向目录" class="headerlink" title="21.ln file1 link1        创建一个硬链接link1指向file1，注意：不允许将硬链接指向目录"></a>21.ln file1 link1        创建一个硬链接link1指向file1，注意：不允许将硬链接指向目录</h2><pre><code>ln file1 link1
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113512398.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h1 id="二、用户和群组操作"><a href="#二、用户和群组操作" class="headerlink" title="二、用户和群组操作"></a>二、用户和群组操作</h1><h2 id="1-addgroup-group-name-创建一个group-name用户组，注意：只有root用户可以创建"><a href="#1-addgroup-group-name-创建一个group-name用户组，注意：只有root用户可以创建" class="headerlink" title="1.addgroup group_name        创建一个group_name用户组，注意：只有root用户可以创建"></a>1.addgroup group_name        创建一个group_name用户组，注意：只有root用户可以创建</h2><pre><code>addgroup group_name
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113529289.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201130113536560.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="2-delgroup-group-name-删除名为group-name的用户组"><a href="#2-delgroup-group-name-删除名为group-name的用户组" class="headerlink" title="2.delgroup group_name        删除名为group_name的用户组"></a>2.delgroup group_name        删除名为group_name的用户组</h2><pre><code>delgroup group_name
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113553956.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="3-groupadd-group-name和groupdel-group-name-效果与1，2大致相同"><a href="#3-groupadd-group-name和groupdel-group-name-效果与1，2大致相同" class="headerlink" title="3.groupadd group_name和groupdel group_name    效果与1，2大致相同"></a>3.groupadd group_name和groupdel group_name    效果与1，2大致相同</h2><pre><code>groupadd group_name
+groupdel group_name
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/202011301136050.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="4-useradd-c-“Comments”-g-root-d-home-user1-username-创建一个用户名为username，备注信息为Comments，群组为root，登入目录为-home-user1"><a href="#4-useradd-c-“Comments”-g-root-d-home-user1-username-创建一个用户名为username，备注信息为Comments，群组为root，登入目录为-home-user1" class="headerlink" title="4.useradd -c “Comments” -g root -d /home/user1 username        创建一个用户名为username，备注信息为Comments，群组为root，登入目录为/home/user1"></a>4.useradd -c “Comments” -g root -d /home/user1 username        创建一个用户名为username，备注信息为Comments，群组为root，登入目录为/home/user1</h2><pre><code>useradd -c &quot;Comments&quot; -g root -d /home/user1 username
+</code></pre>
+<h2 id="5-useradd-username-创建一个用户名为username的用户"><a href="#5-useradd-username-创建一个用户名为username的用户" class="headerlink" title="5.useradd username        创建一个用户名为username的用户"></a>5.useradd username        创建一个用户名为username的用户</h2><pre><code>useradd username
+</code></pre>
+<h2 id="6-useradd-r-userdir-username-创建一个用户名为username的用户，登入目录为userdir"><a href="#6-useradd-r-userdir-username-创建一个用户名为username的用户，登入目录为userdir" class="headerlink" title="6.useradd -r userdir username    创建一个用户名为username的用户，登入目录为userdir"></a>6.useradd -r userdir username    创建一个用户名为username的用户，登入目录为userdir</h2><pre><code>useradd -r userdir username
+</code></pre>
+<h2 id="7-userdel-r-userdir-username-删除一个用户名为username的用户，并删除其登入目录userdir"><a href="#7-userdel-r-userdir-username-删除一个用户名为username的用户，并删除其登入目录userdir" class="headerlink" title="7.userdel -r userdir username        删除一个用户名为username的用户，并删除其登入目录userdir"></a>7.userdel -r userdir username        删除一个用户名为username的用户，并删除其登入目录userdir</h2><pre><code>userdel -r userdir username
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/2020113011362390.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="8-usermod-c-“Comments”-g-group-d-home-dir-username-修改username用户的备注为Comments，群组为group，登入目录为-home-dir"><a href="#8-usermod-c-“Comments”-g-group-d-home-dir-username-修改username用户的备注为Comments，群组为group，登入目录为-home-dir" class="headerlink" title="8.usermod -c “Comments” -g group -d /home/dir username        修改username用户的备注为Comments，群组为group，登入目录为/home/dir"></a>8.usermod -c “Comments” -g group -d /home/dir username        修改username用户的备注为Comments，群组为group，登入目录为/home/dir</h2><pre><code>usermod -c “Comments” -g group -d /home/dir username
+</code></pre>
+<h2 id="9-passwd-修改当前用户密码"><a href="#9-passwd-修改当前用户密码" class="headerlink" title="9.passwd    修改当前用户密码"></a>9.passwd    修改当前用户密码</h2><pre><code>passwd
+</code></pre>
+<h2 id="10-passwd-user1-修改user1用户的秘密"><a href="#10-passwd-user1-修改user1用户的秘密" class="headerlink" title="10.passwd user1    修改user1用户的秘密"></a>10.passwd user1    修改user1用户的秘密</h2><pre><code>passwd user1
+</code></pre>
+<h2 id="11-chage-E-2020-12-20-user1-设置用户user1用户密码失效日期"><a href="#11-chage-E-2020-12-20-user1-设置用户user1用户密码失效日期" class="headerlink" title="11.chage -E 2020-12-20 user1        设置用户user1用户密码失效日期"></a>11.chage -E 2020-12-20 user1        设置用户user1用户密码失效日期</h2><pre><code>chage -E 2020-12-20 user1
+</code></pre>
+<h2 id="12-su-切换root用户，sudo也是一样"><a href="#12-su-切换root用户，sudo也是一样" class="headerlink" title="12.su    切换root用户，sudo也是一样"></a>12.su    切换root用户，sudo也是一样</h2><pre><code>su
+sudo
+</code></pre>
+<h2 id="13-sudo-i-从当前管理员用户切换到root用户，适合忘记root密码的时候操作"><a href="#13-sudo-i-从当前管理员用户切换到root用户，适合忘记root密码的时候操作" class="headerlink" title="13.sudo -i    从当前管理员用户切换到root用户，适合忘记root密码的时候操作"></a>13.sudo -i    从当前管理员用户切换到root用户，适合忘记root密码的时候操作</h2><pre><code>sudo -i
+</code></pre>
+<h2 id="14-exit-退出当前用户"><a href="#14-exit-退出当前用户" class="headerlink" title="14.exit    退出当前用户"></a>14.exit    退出当前用户</h2><pre><code>exit
+</code></pre>
+<h1 id="三、文件的权限操作"><a href="#三、文件的权限操作" class="headerlink" title="三、文件的权限操作"></a>三、文件的权限操作</h1><h2 id="1-ls-lh-显示所有文件以及其权限"><a href="#1-ls-lh-显示所有文件以及其权限" class="headerlink" title="1.ls -lh    显示所有文件以及其权限"></a>1.ls -lh    显示所有文件以及其权限</h2><pre><code>ls -lh
+</code></pre>
+<p>注：d开头代表文件夹，l开头代表软链接，之后的每一组rwx，分别对应文件所有者、文件所有者群组用户、普通用户的读写执行权限，-代表无该权限，然后第一个用户名是文件所有者，第二个是群组。</p>
+<p><img src="https://img-blog.csdnimg.cn/20201130113701288.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMjg5NzEx,size_16,color_FFFFFF,t_70" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="2-chown-username-file-将file文件的所有者改为username用户"><a href="#2-chown-username-file-将file文件的所有者改为username用户" class="headerlink" title="2.chown username file    将file文件的所有者改为username用户"></a>2.chown username file    将file文件的所有者改为username用户</h2><pre><code>chown username file
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113729214.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMjg5NzEx,size_16,color_FFFFFF,t_70" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="3-chomd-ugo-rwx-dir1-设置目录dir1的所有人-u-、群组-g-以及其他人-o-以读（r-）、写-w-和执行-x-的权限"><a href="#3-chomd-ugo-rwx-dir1-设置目录dir1的所有人-u-、群组-g-以及其他人-o-以读（r-）、写-w-和执行-x-的权限" class="headerlink" title="3.chomd ugo+rwx dir1        设置目录dir1的所有人(u)、群组(g)以及其他人(o)以读（r ）、写(w)和执行(x)的权限"></a>3.chomd ugo+rwx dir1        设置目录dir1的所有人(u)、群组(g)以及其他人(o)以读（r ）、写(w)和执行(x)的权限</h2><pre><code>chomd u+x dir1    //给所有者(u)以目录dir1的执行(x)权限
+chomd g+w dir1
+chomd o+r dir1
+</code></pre>
+<h2 id="4-chown-user1-group1-file1-改变文件file1的所有人和群组属性为user1和group1"><a href="#4-chown-user1-group1-file1-改变文件file1的所有人和群组属性为user1和group1" class="headerlink" title="4.chown user1:group1 file1  改变文件file1的所有人和群组属性为user1和group1"></a>4.chown user1:group1 file1  改变文件file1的所有人和群组属性为user1和group1</h2><pre><code>chown user1:group1 file1
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113740501.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h1 id="四、文件搜索"><a href="#四、文件搜索" class="headerlink" title="四、文件搜索"></a>四、文件搜索</h1><h2 id="1-find-name-file1-代表根目录，-name代表按文件名搜索，搜索到名字为file1的文件或目录会显示它的路径"><a href="#1-find-name-file1-代表根目录，-name代表按文件名搜索，搜索到名字为file1的文件或目录会显示它的路径" class="headerlink" title="1.find / -name file1        /代表根目录，-name代表按文件名搜索，搜索到名字为file1的文件或目录会显示它的路径"></a>1.find / -name file1        /代表根目录，-name代表按文件名搜索，搜索到名字为file1的文件或目录会显示它的路径</h2><pre><code>find / -name file1
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113755828.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="2-find-user-user1-搜索所有者为user1的文件或目录，显示它们的路径"><a href="#2-find-user-user1-搜索所有者为user1的文件或目录，显示它们的路径" class="headerlink" title="2.find / -user user1        搜索所有者为user1的文件或目录，显示它们的路径"></a>2.find / -user user1        搜索所有者为user1的文件或目录，显示它们的路径</h2><pre><code>find / -user user1
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113804128.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="3-find-home-name-txt-在-home路径下搜索以-txt结尾的文件"><a href="#3-find-home-name-txt-在-home路径下搜索以-txt结尾的文件" class="headerlink" title="3.find /home -name *.txt    在/home路径下搜索以.txt结尾的文件"></a>3.find /home -name *.txt    在/home路径下搜索以.txt结尾的文件</h2><pre><code>find /home -name \*.txt
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201130113813807.png" srcset="/Pages/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h1 id="五、查看或编辑文件内容"><a href="#五、查看或编辑文件内容" class="headerlink" title="五、查看或编辑文件内容"></a>五、查看或编辑文件内容</h1><h2 id="1-cat-file1-从第一个字节开始正向查看文件file1的内容"><a href="#1-cat-file1-从第一个字节开始正向查看文件file1的内容" class="headerlink" title="1.cat file1    从第一个字节开始正向查看文件file1的内容"></a>1.cat file1    从第一个字节开始正向查看文件file1的内容</h2><pre><code>cat file1
+</code></pre>
+<h2 id="2-tac-file1-从最后一行开始反向查看文件file1的内容"><a href="#2-tac-file1-从最后一行开始反向查看文件file1的内容" class="headerlink" title="2.tac file1    从最后一行开始反向查看文件file1的内容"></a>2.tac file1    从最后一行开始反向查看文件file1的内容</h2><pre><code>tac file1
+</code></pre>
+<h2 id="3-head-2-file1-查看文件file1的前两行"><a href="#3-head-2-file1-查看文件file1的前两行" class="headerlink" title="3.head -2 file1    查看文件file1的前两行"></a>3.head -2 file1    查看文件file1的前两行</h2><pre><code>head -2 file1
+</code></pre>
+<h2 id="4-tail-2-file1-查看文件file1的最后两行"><a href="#4-tail-2-file1-查看文件file1的最后两行" class="headerlink" title="4.tail -2 file1        查看文件file1的最后两行"></a>4.tail -2 file1        查看文件file1的最后两行</h2><pre><code>tail -2 file1
+</code></pre>
+<h2 id="5-vim-file1-使用vim来编辑文件file1，进入后按i开始编辑，编辑完按esc，然后输入：wq可以保存并退出"><a href="#5-vim-file1-使用vim来编辑文件file1，进入后按i开始编辑，编辑完按esc，然后输入：wq可以保存并退出" class="headerlink" title="5.vim file1        使用vim来编辑文件file1，进入后按i开始编辑，编辑完按esc，然后输入：wq可以保存并退出"></a>5.vim file1        使用vim来编辑文件file1，进入后按i开始编辑，编辑完按esc，然后输入：wq可以保存并退出</h2><pre><code>vim file1
+</code></pre>
+<h2 id="6-gedit-file1-使用gedit来编辑文件file1，gedit是ubuntu默认的文本编辑器"><a href="#6-gedit-file1-使用gedit来编辑文件file1，gedit是ubuntu默认的文本编辑器" class="headerlink" title="6.gedit file1    使用gedit来编辑文件file1，gedit是ubuntu默认的文本编辑器"></a>6.gedit file1    使用gedit来编辑文件file1，gedit是ubuntu默认的文本编辑器</h2><pre><code>gedit file1
+</code></pre>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/Pages/categories/linux/">linux</a>
+                    
+                      <a class="hover-with-bg" href="/Pages/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                      <a class="hover-with-bg" href="/Pages/categories/%E5%91%BD%E4%BB%A4/">命令</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/Pages/tags/linux/">linux</a>
+                    
+                      <a class="hover-with-bg" href="/Pages/tags/shell/">shell</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a>，除<a href="/Pages/links/" rel="nofollow noopener">友链</a>外 ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/Pages/2020/12/10/2020-12-10-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%EF%BC%88linux%E4%BB%A5ubuntu%E4%B8%BA%E4%BE%8B%E5%AD%90%EF%BC%89--%E5%88%9D%E5%AD%A6%E7%89%88/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux系统（ubuntu）常用命令</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Pages/2020/11/29/2020-11-29-%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85windows%E5%92%8Clinux%E5%8F%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%9F/">
+                        <span class="hidden-mobile">如何安装windows和linux双操作系统？</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "sOQa0Q9dBtBOIwXYirJ82qTB-gzGzoHsz",
+          app_key: "cqPbqcwI3FzKqRTjdG9TBzJp",
+          placeholder: "说点什么...",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: true,
+          serverURLs: "https://prprjan9.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://github.com/Lixingwei0623" target="_blank" rel="nofollow noopener"><span>LiXingwei</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/LiXingweiBlog/Pages" target="_blank" rel="nofollow noopener"><span>Blog</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/Pages/js/events.js" ></script>
+<script  src="/Pages/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/Pages/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/Pages/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/Pages/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/Pages/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/Pages/js/boot.js" ></script>
+
+
+</body>
+</html>

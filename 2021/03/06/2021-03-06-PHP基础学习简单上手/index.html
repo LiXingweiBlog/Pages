@@ -1,0 +1,761 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/Pages/img/profile.jpg">
+  <link rel="icon" href="/Pages/img/profile.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="编程路上的记录">
+  <meta name="author" content="长理小生">
+  <meta name="keywords" content="编程">
+  
+  <title>PHP基础上手 - 长理小生</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/Pages/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/Pages/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lixingweiblog.github.io","root":"/Pages/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"pRpRjan9BBxQaky0Ju0Xe0i3-gzGzoHsz","app_key":"MIECgEde4A36Vmp0KxL2TMkl","server_url":"https://prprjan9.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/Pages/js/utils.js" ></script>
+  <script  src="/Pages/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/Pages/">&nbsp;<strong>长理小生</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/Pages/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="PHP基础上手">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      长理小生
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-06 13:21" pubdate>
+        2021年3月6日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      38
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">PHP基础上手</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：1 小时前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ol>
+<li><p>定义变量不需要规定数据类型</p>
+</li>
+<li><p>变量名以 “$” 符号开头，只能包含数字、字母、下划线，不能数字开头</p>
+</li>
+<li><p>使用unset函数清除变量</p>
+</li>
+<li><p>预定义变量</p>
+<pre><code>$_GET：存储以get方式提交的表单
+$_POST：存储以post方式提交的表单
+$_REQUEST：存储以get或post方式提交的表单
+$GLOBALS：存储PHP中所有全局变量
+$_SERVER：服务器信息
+$_SESSIOON：session会话信息
+$_COOKIE：cookie会话信息
+$_ENV：环境信息
+$_FILES：用户上传的文件信息
+</code></pre>
+</li>
+<li><p>可变变量：一个变量的内容可作为另一变量的名字</p>
+<pre><code>$a=&#39;b&#39;;
+$b=&#39;bb&#39;;
+//   $$a ==&#39;bb&#39;
+</code></pre>
+</li>
+</ol>
+<p>变量赋值与值传递</p>
+<pre><code>$a = 1;
+$b = $a;    //值传递，将a值复制一份给b
+$c = &amp;$a;    //引用传递，指向同一个值（内存空间）
+</code></pre>
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><pre><code>//使用define函数定义
+define(&#39;PI&#39;,3.14,(false));    //最后的false表示大小写敏感，可省略；若定义为true则大小写不敏感
+
+//使用const关键字定义
+const PII = 3;
+
+//使用define函数定义特殊常量
+define(&#39;&gt;_&lt;&#39;,&#39;smile&#39;);
+
+//使用常量
+echo PI;
+
+//用constant函数访问常量
+echo constant(&#39;&gt;_&lt;&#39;);
+</code></pre>
+<p>常量名字不用$符号（会被系统当作变量）<br>常量名由字母、数字、下划线组成，不能以数字开头，通常以大写字母为主（与变量区分）<br>使用define方式定义的常量名中可以使用一些特殊字符，但访问时只能用constant函数<br>系统常量</p>
+<pre><code>PHP_VERSION：PHP版本号
+__DIR__：当前php脚本所在绝对路径
+__FILE__：当前php脚本所在绝对路径加文件名
+__LINE__：当前语句（引用该常量的语句）所在行
+__NAMESPACE__：当前所属命名空间
+__CLASS__：当前所属的类
+__METHOD__：当前所属的方法
+</code></pre>
+<h2 id="数据类型与运算符"><a href="#数据类型与运算符" class="headerlink" title="数据类型与运算符"></a>数据类型与运算符</h2><p>数据类型<br>简单（基本）数据类型</p>
+<ol>
+<li><p>整型：int，4字节，表示整数，默认有符号</p>
+<pre><code>$a = 120;    //十进制
+$b = 0b110;        //二进制
+$c = 0120;        //八进制
+$d = 0x12a;        //十六进制
+//输出时默认为十进制，进制间转换可用函数，如：dexbin()为十进制转二进制
+</code></pre>
+</li>
+<li><p>浮点型：float/double，8字节，表示小数或整型存不下的整数</p>
+</li>
+<li><p>字符串型：string，大小按实际长度分配，表示字符串</p>
+</li>
+<li><p>布尔类型：bool，表示true和false</p>
+</li>
+<li><p>复合数据类型</p>
+</li>
+</ol>
+<p>对象类型：object，存放对象<br>数组类型：array，存放数组（一次性）</p>
+<ol start="6">
+<li>特殊数据类型</li>
+</ol>
+<p>资源类型：resource，存放资源数据（PHP外部数据，如数据库、文件）<br>空类型：NULL<br>数据类型的转换</p>
+<p>其他类型转bool类型：除 0，“0”，NULL，空字符串 外，均为true<br>bool类型转数值：true为1，false为0<br>字符串类型转数值：以字母开头的字符串永远为0；以数字开头的字符串，数值为遇到字母或第二个小数点前为止<br>强制类型转换：（需转换的类型）+需转换的变量或表达式，不改变原变量的数据类型<br>数据类型的判断</p>
+<p>通过以is_开头后跟数据类型的函数判断：is_类型(变量名)。函数返回值用var_dump函数查看。</p>
+<p>用var_dump函数查看：var_dump(变量名)</p>
+<p>用一组可获取或设定类型的函数</p>
+<pre><code>echo gettype($a);    //获取数据类型
+settype($a,&#39;int&#39;);    //设定数据类型，与强制类型转换不同，会改变原变量的数据类型
+
+  empty();    //判断数据是否为空(NULL)或0，为空返回true，反之false
+  isset();    //判断变量是否存在，存在返回true，反之false
+</code></pre>
+<p>运算符<br>赋值、算术运算符：赋值运算”=”，加法”+”，减法”-“，乘法”*”，除法”/“，取余运算”%”，自加运算”++”，自减运算”–”</p>
+<p>比较运算符</p>
+<pre><code>&gt;,&lt;,&gt;=,&lt;=,==,!=：大于，小于，大于等于，小于等于，等于，不等于
+
+===,!==：全等于（数据大小与类型都相同），不全等于（大小或类型不同）
+
+$a = &#39;123&#39;;
+$b = 123;
+var_dump($a == $b);        //返回true
+var_dump($a === $b);        //返回false
+</code></pre>
+<p>逻辑运算符：逻辑与”&amp;&amp;”，逻辑或”||”，逻辑非”!”</p>
+<p>连接运算符：”.”，将两个字符串拼接在一起；”.=”，字符串拼接后赋值给左边</p>
+<p>错误抑制符：”@”，在可能出错的语句前加上@符号可关闭错误回显</p>
+<p>三目运算符：“表达式1 ? 表达式2 : 表达式3”，表达式1成立时执行表达式2，否则执行表达式3</p>
+<p>位运算符：”&amp;“按位与，两个位都为1则为1；”|“按位或，两个位有一个为1则为1；”~“按位非，将位取反；”^“按位异或，两个位相同为0，不同为1；”&lt;&lt;“按位左移，右边补0；”&gt;&gt;”，按位右移，左边补符号位内容</p>
+<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><p>if结构，while循环，du-while循环，for循环，switch结构与C语言大体相同</p>
+<p>流程控制替代语法：增强PHP+HTML的易读性与美观性</p>
+<p>例：打印九九乘法表</p>
+<pre><code>&lt;table border=1&gt;
+    &lt;?php for($i = 1;$i &lt; 10;$i++):        //for循环的大括号可由 : 与 endfor; 代替 ?&gt;
+    &lt;tr&gt;
+        &lt;?php for($j = 1;$j &lt;= $i;$j++): ?&gt;
+        &lt;td&gt;
+            &lt;?php echo $i . &#39; * &#39; . $j . &#39; = &#39;. $i * $j; ?&gt;
+        &lt;/td&gt;
+        &lt;?php endfor;?&gt;
+    &lt;/tr&gt;
+    &lt;?php endfor;?&gt;
+&lt;/table&gt;
+</code></pre>
+<!--    相似的结构还有if,switch,while,foreach    -->
+
+<h2 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h2><p>实质上是将文件中内容嵌入另一文件中相应位置</p>
+<p>文件包含的两种方法</p>
+<p>向上包含：使用被包含文件中的数据<br>向下包含：将本文件中的数据通过被包含文件中的方式显示<br>文件包含的四种形式</p>
+<p>include , require：包含文件。语法：include ‘文件名’; 或 include(‘文件名’)，文件不在当前目录时要用绝对路径（安全）或相对路径（高效），下同</p>
+<p>_注：绝对路径：本地绝对路径（从磁盘根目录开始）与网络绝对路径（相对于网站主机名对应的路径）；相对路径：_相对于当前文件的路径，./ 表示当前目录，../表示上级目录</p>
+<p>include_once , require_once：系统判断是否已包含文件，使得对应文件只包含一次</p>
+<p>include与require区别</p>
+<p>在包含文件出错时，include报错级别较低，后面代码会继续执行；require报错级别较高，代码会立即停止执行</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h3><p>function，一种语法结构，将一个代码块封装到一个结构中。</p>
+<p>关键点：function关键字，函数名，参数，函数体，返回值</p>
+<p>基本语法：</p>
+<pre><code>function 函数名([参数])
+&#123;
+    //函数体
+    return 结果;        //返回值
+&#125;
+</code></pre>
+<p>注意：</p>
+<p>实参不能少于形参个数，多余参数函数不会使用。函数定义时可为形参初始化一个默认值，使得提供参数过少时函数可正常执行。例：</p>
+<pre><code>function test($num1,$num2=0)        //有默认值的参数应放在最右边
+&#123;
+    echo $num1+$num2;        //传入参数不足时使用默认值0
+&#125;
+</code></pre>
+<p>当函数想改变传入实参存储的值时，在定义函数时形参前加上”&amp;”取地址符号，即地址传递</p>
+<p>return返回值可在函数中使用，也可以在文件中使用（包含文件的返回值）,return后的语句不执行</p>
+<p>如果有变量的值恰好为函数名，那么调用函数可以通过变量+()，如：$变量([参数])</p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>全局变量：在函数外部定义的变量，函数体内不能直接访问，需要传值<br>局部变量：在函数内部定义的变量，只能在函数体内使用<br>超全局变量：一些预定义变量，如$GLOBALS等<br>在函数内使用global关键字定义的变量，在函数外部也能使用（系统自动在全局区定义相同变量，并将两个变量指向同一内存空间）；若函数外部存在同名变量，系统自动将两个变量合并（直接指向外部全局变量内存空间）<br>静态变量：在函数中用static关键字定义的变量（在定义时应同时赋值），在函数调用结束后，内存空间不会被清空，在函数下次调用时仍可访问之前的数据，且不会被重复初始化<br>匿名函数<br>没有名字的函数</p>
+<p>基本语法：</p>
+<pre><code>//定义基本匿名函数
+$func = function()
+&#123;
+    echo &#39;hello world&#39;;
+&#125;;        //此处应有分号
+//调用匿名函数
+$func()
+</code></pre>
+<p>变量保存匿名函数，本质上得到的是一个对象（closure）</p>
+<h2 id="常用系统函数"><a href="#常用系统函数" class="headerlink" title="常用系统函数"></a>常用系统函数</h2><h3 id="有关输出的函数"><a href="#有关输出的函数" class="headerlink" title="有关输出的函数"></a>有关输出的函数</h3><p>print()：类似于echo，返回值为1，可以不用括号<br>print_r()：类似于var_dump，但不会输出数据类型，只会输出值（常用于打印数组）</p>
+<h3 id="有关时间的函数"><a href="#有关时间的函数" class="headerlink" title="有关时间的函数"></a>有关时间的函数</h3><p>date()：按照指定格式格式化时间戳，没有指定格式将按照默认格式。具体参数<br>time()：获取当前时间对应的时间戳（无参数）<br>microtime()：获取微秒级别的时间</p>
+<h3 id="有关数学的函数"><a href="#有关数学的函数" class="headerlink" title="有关数学的函数"></a>有关数学的函数</h3><p>max()，min()：分别返回参数中最大的值和最小的值<br>rand([参数1],参数2)：得到一个在区间内的随机数（包括两个参数），参数1可不提供<br>mt_rand()：与rand函数相同，但效率更高<br>round()：四舍五入<br>ceil()：向上取整，得到比参数大的最小整数<br>floor()：向下取整，得到比参数小的最大整数<br>pow(参数1,参数2)：得到参数1的参数2次方<br>abs()：绝对值<br>sqrt()：平方根</p>
+<h3 id="有关函数的函数"><a href="#有关函数的函数" class="headerlink" title="有关函数的函数"></a>有关函数的函数</h3><p>function_exists()：判断指定函数名字是否在内存中存在<br>func_get_arg(n)：在自定义函数中去获取第n-1 个参数<br>func_get_args()：在自定义函数中去获取所有参数（返回一个数组）<br>func_num_args()：获取当前自定义函数的参数数量</p>
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>错误代号<br>所有错误代码会被系统定义为系统常量，可以直接使用</p>
+<p>系统错误<br>E_PARSE：编译错误<br>E_ERROR：fatal error，致命错误，会导致代码不能正确执行（出错的位置断掉）<br>E_WARNING：warning，警告错误，不会影响代码执行，但可能会得到意想不到的结果<br>E_NOTICE：通知错误，不会影响代码执行<br>用户错误：E_USER_ERROR，E_USER_WARNING，E_USER_NOTICE，用户在使用自定义错误触发的时候会使用到（系统不会用到）<br>其他：E_ALL，代表所有错误，建议在开发环境中使用<br>所有以E开头的错误常量（代号）都存储在一个字节内，每种占据一个位，所以可以通过位运算来进行一些错误的控制，例：</p>
+<p>排除通知级别的错误：E_ALL &amp; ~E_NOTICE</p>
+<p>只要警告和通知级别：E_WARNING | E_NOTICE</p>
+<h3 id="错误触发"><a href="#错误触发" class="headerlink" title="错误触发"></a>错误触发</h3><p>程序运行时触发：主要针对代码语法错误和运行时错误，由系统自动生成<br>人为触发：人为使用对应判断代码来触发错误提示<br>trigger_error(提示内容,[错误级别])：人为触发错误，错误级别默认为E_USER_NOTICE，不影响下面执行</p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="字符串定义"><a href="#字符串定义" class="headerlink" title="字符串定义"></a>字符串定义</h3><p>普通定义：使用单引号或双引号包裹</p>
+<p>结构化定义</p>
+<p>nowdoc定义</p>
+<pre><code>$str = &lt;&lt;&lt;&#39;ABC&#39;    
+                    //上边界符，可随意命名，后面不能有内容
+****内容****
+ABC;        //下边界符必须顶格
+</code></pre>
+<p>heredoc定义</p>
+<pre><code>$str = &lt;&lt;&lt;CBA
+****内容****
+CBA;
+</code></pre>
+<p>注意：</p>
+<p>普通定义中，使用单引号包裹的字符串只能识别 \’ 转义字符，其他转义字符原样输出；使用双引号包裹的字符串只识别不了 \’ 转义字符，其他转义字符按转义后形态输出——也就是说，双引号包裹的字符串中当符 号 未 转 义 时 ， 可 以 用 来 解 析 变 量 （ 前 提 是 系 统 能 区 分 变 量 与 其 后 面 的 字 符 串 ， 而 不 是 连 在 一 起 ， 比 如 符号未转义时，可以用来解析变量（前提是系统能区分变量与其后面的字符串，而不是连在一起，比如符号未转义时，可以用来解析变量（前提是系统能区分变量与其后面的字符串，而不是连在一起，比如a bcd与$abcd）<br>结构化定义中，边界符之间的内容全部原样输出</p>
+<h3 id="字符串长度问题"><a href="#字符串长度问题" class="headerlink" title="字符串长度问题"></a>字符串长度问题</h3><p>基本函数strlen()：得到字符串的长度（单位：字节）<br>多字节字符串长度问题：中文在utf-8字符集下占3个字节<br>多字节字符串拓展模块：mbstring拓展<br>字符串长度函数mb_strlen(string $str[,string $encoding])，第二个参数为指定字符集，未指定则为默认的ASCII</p>
+<h3 id="字符串相关函数"><a href="#字符串相关函数" class="headerlink" title="字符串相关函数"></a>字符串相关函数</h3><p>转换函数：implode(),explode(),str_split()<br>截取函数：trim(),ltrim(),rtrim(),substr(),strstr()<br>大小转换函数：strtolower(),strtoupper(),ucfirst()<br>查找函数：strpos(),strrpos()<br>替换函数：str_replace()<br>格式化函数：printf(),sprintf()<br>其他：str_repeat(),str_shuffle()</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="数组定义"><a href="#数组定义" class="headerlink" title="数组定义"></a>数组定义</h3><p>使用array关键字（常用）</p>
+<p>$a = array(元素1,元素2,……);<br>$b = array(下标=&gt;元素,……);<br>1<br>2<br>使用中括号包裹数据</p>
+<p>$a = [元素1,元素2,……]；<br>1<br>给变量加上中括号</p>
+<p>$a[] = 值;<br>$a[下标] = 值;<br>1<br>2<br>注意：</p>
+<p>下标可以为整数或字符串，可以混用<br>元素顺序以放入时顺序为准，与下标无关<br>特殊值下标：true——1，false——0，NULL——“”<br>php中数组元素没有类型限制，没有长度限制<br>PHP多维数组：即数组元素也是数组，建议不超过三维</p>
+<h3 id="数组遍历"><a href="#数组遍历" class="headerlink" title="数组遍历"></a>数组遍历</h3><pre><code>foreach($数组 as [$下标 =&gt;] $值)&#123;
+    //输出函数
+&#125;
+//例：
+foreach($arr as $k =&gt; $v)
+&#123;
+    echo $k , &#39;==&#39; , $v        //$k,$v为函数内变量
+&#125;
+</code></pre>
+<h3 id="数组相关函数"><a href="#数组相关函数" class="headerlink" title="数组相关函数"></a>数组相关函数</h3><p>排序函数：sort(),rsort(),arsort(),ksort(),shuffle()<br>指针函数：reset(),end(),next(),prev(),current(),key()<br>其他函数：count(),array_push(),array_pop(),array_shift(),array_unshift(),array_reverse(),in_array(),array_keys(),array_values()</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/Pages/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                      <a class="hover-with-bg" href="/Pages/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
+                    
+                      <a class="hover-with-bg" href="/Pages/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/php/">php</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/Pages/tags/%E5%85%A5%E9%97%A8/">入门</a>
+                    
+                      <a class="hover-with-bg" href="/Pages/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">数据类型</a>
+                    
+                      <a class="hover-with-bg" href="/Pages/tags/php/">php</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a>，除<a href="/Pages/links/" rel="nofollow noopener">友链</a>外 ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/Pages/2021/04/08/2021-04-08-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80(%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86)/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">密码学基础</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Pages/2021/02/20/2021-02-20-Node.js%E5%9F%BA%E7%A1%80/">
+                        <span class="hidden-mobile">node.js初学</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "sOQa0Q9dBtBOIwXYirJ82qTB-gzGzoHsz",
+          app_key: "cqPbqcwI3FzKqRTjdG9TBzJp",
+          placeholder: "说点什么...",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: true,
+          serverURLs: "https://prprjan9.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://github.com/Lixingwei0623" target="_blank" rel="nofollow noopener"><span>LiXingwei</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/LiXingweiBlog/Pages" target="_blank" rel="nofollow noopener"><span>Blog</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/Pages/js/events.js" ></script>
+<script  src="/Pages/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/Pages/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/Pages/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/Pages/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/Pages/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/Pages/js/boot.js" ></script>
+
+
+</body>
+</html>

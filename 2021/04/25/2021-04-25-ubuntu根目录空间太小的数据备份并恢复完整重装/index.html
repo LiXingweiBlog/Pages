@@ -1,0 +1,594 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/Pages/img/profile.jpg">
+  <link rel="icon" href="/Pages/img/profile.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="编程路上的记录">
+  <meta name="author" content="长理小生">
+  <meta name="keywords" content="编程">
+  
+  <title>ubuntu根目录空间太小的数据备份并恢复完整重装【双系统重装必看！！】 - 长理小生</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/Pages/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/Pages/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lixingweiblog.github.io","root":"/Pages/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"pRpRjan9BBxQaky0Ju0Xe0i3-gzGzoHsz","app_key":"MIECgEde4A36Vmp0KxL2TMkl","server_url":"https://prprjan9.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/Pages/js/utils.js" ></script>
+  <script  src="/Pages/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/Pages/">&nbsp;<strong>长理小生</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/Pages/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="ubuntu根目录空间太小的数据备份并恢复完整重装【双系统重装必看！！】">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      长理小生
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-25 06:23" pubdate>
+        2021年4月25日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">ubuntu根目录空间太小的数据备份并恢复完整重装【双系统重装必看！！】</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：30 分钟前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="本文适用解决什么问题？"><a href="#本文适用解决什么问题？" class="headerlink" title="本文适用解决什么问题？"></a>本文适用解决什么问题？</h1><p>如果你装了双系统，现在要卸载linux重装，且原linux系统里的软件和配置要完整保留，那么你找对了。当然你也可以借鉴其中某个步骤来解决你某个问题，比如怎么用systemback给当前系统生成iso文件、iso文件大于4G该如何生成、完整备份整个系统为iso文件、完整卸载linux、制作系统启动盘、安装双系统等等操作。</p>
+<p>作者遇到问题描述：<br>之前装了双系统，只给ubuntu分了20G，虽然后面又压缩卷10G挂载，但是挂载的不方便，所以打算把ubuntu重装多分配一些硬盘，但是ubuntu用了小半年了，里面很多软件工具和环境，一一部署很麻烦，所以想把当前的ubuntu做成一个iso镜像文件刻录到U盘，然后卸载ubuntu，再重新压缩卷，多压一些空间，再把U盘来重装ubuntu，以达到原数据不变，只扩大空间的目的。</p>
+<h1 id="ubuntu系统完整备份"><a href="#ubuntu系统完整备份" class="headerlink" title="ubuntu系统完整备份"></a>ubuntu系统完整备份</h1><p>开始也看过用tar命令来备份自己的整个根目录到U盘，但是tar命令每次打包到4G大小左右就不动了，报错说太大了。<br>所以准备把自己的ubuntu做成iso文件，直接重装。</p>
+<h1 id="systemback的使用"><a href="#systemback的使用" class="headerlink" title="systemback的使用"></a>systemback的使用</h1><h2 id="安装systemback"><a href="#安装systemback" class="headerlink" title="安装systemback"></a>安装systemback</h2><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs smali">sudo<span class="hljs-built_in"> add-apt-repository </span>ppa:nemh/systemback<br>sudo apt update<br>sudo apt install<span class="hljs-keyword"> system</span>back<br></code></pre></td></tr></table></figure>
+<p>一般就用以上命令安装就好了，但是如果你出错了，说找不到源或者不支持，那么先运行这条命令删除自己系统版本的PPA:</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs smali">sudo<span class="hljs-built_in"> add-apt-repository </span>--remove ppa:nemh/systemback<br></code></pre></td></tr></table></figure>
+<p>然后再替代成其他版本的PPA:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">sudo</span> add-apt-repository <span class="hljs-string">&quot;deb http://ppa.launchpad.net/nemh/systemback/ubuntu xenial main&quot;</span><br><span class="hljs-attribute">sudo</span> apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <span class="hljs-number">382003</span>C<span class="hljs-number">2</span>C<span class="hljs-number">8</span>B<span class="hljs-number">7</span>B<span class="hljs-number">4</span>AB<span class="hljs-number">813</span>E<span class="hljs-number">915</span>B<span class="hljs-number">14</span>E<span class="hljs-number">4942973</span>C<span class="hljs-number">62</span>A<span class="hljs-number">1</span>B<br></code></pre></td></tr></table></figure>
+<p>然后再行安装systemback</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake">sudo apt update<br>sudo apt <span class="hljs-keyword">install</span> systemback<br></code></pre></td></tr></table></figure>
+<h2 id="使用systemback"><a href="#使用systemback" class="headerlink" title="使用systemback"></a>使用systemback</h2><p>在应用列表找到并运行，输入自己系统的用户名和密码进入</p>
+<p>单击<code>Live System Create</code>按钮，然后为ISO文件命名，可以选择包含用户数据文件，单击新建按钮以创建实时系统，系统的每个文件都会被纳入，未选中用户数据，则家目录的数据不会。</p>
+<p>然后<code>工作目录</code>要选择够大的空间，并且是linux文件系统格式的空间，也就是ext4，相信各位自己的根目录下已经找不到能再容纳一遍自己所有数据的空间了，所以我是选择的U盘的挂载目录，但是U盘是不能直接用的，除非你的U盘是专门用于linux系统的，否则要将其擦写为ext4文件系统格式的，进入ubuntu的磁盘管理，选择自己的U盘，删除卷使其成为未分配，然后将其新建卷，文件系统选择ext4格式，并且要擦写，之后再挂载上来就可以用了。</p>
+<p>然后<code>creat new</code>，等完成后，U盘里就会有sblive文件了，如果它小于4G，那么你可以直接在systemback里将它转为iso文件。但是如果大于4G，你就需要看下面这一点了：</p>
+<h2 id="sblive文件大于4G该怎么转iso文件？"><a href="#sblive文件大于4G该怎么转iso文件？" class="headerlink" title="sblive文件大于4G该怎么转iso文件？"></a>sblive文件大于4G该怎么转iso文件？</h2><p>参考博客: <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39940390/article/details/94980229">Systemback无法将超过4G的sblive文件转存为镜像文件的解决办法</a>.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs bash">//1. 解压sblive文件<br><br>mkdir sblive<br>tar -xf /home/systemback_live_2016-04-27.sblive -C sblive<br><br><br>//2. 重命名syslinux为isolinux<br><br>mv sblive/syslinux/syslinux.cfg sblive/syslinux/isolinux.cfg<br>mv sblive/syslinux sblive/isolinux<br><br>//3. 安装cdtools<br>//若在安装aria2时，出现E: 无法获得锁 /var/lib/dpkg/lock - open (11: 资源临时不可用) <br>//请执行两条命令：<br>//sudo rm /var/cache/apt/archives/lock<br>//sudo rm /var/lib/dpkg/lock<br><br>sudo apt-get install aria2<br>aria2c -s 10 https://nchc.dl.sourceforge.net/project/cdrtools/alpha/cdrtools-3.02a07.tar.gz<br>tar -xzvf cdrtools-3.02a07.tar.gz<br><span class="hljs-built_in">cd</span> cdrtools-3.02<br>make<br>sudo make install<br><br>// 4.生成iso文件<br>//此操作前要<span class="hljs-built_in">cd</span>至sblive的上级目录，否则下面命令中的sblive请相应变化，确保能正确访问sblive<br><br>/opt/schily/bin/mkisofs -iso-level 3 -r -V sblive -cache-inodes -J -l -b isolinux/isolinux.bin -no-emul-boot -boot-load-size 4 -boot-info-table -c isolinux/boot.cat -o sblive.iso sblive<br><br></code></pre></td></tr></table></figure>
+<p>现在你就得到了你自己ubuntu系统的iso镜像文件了，将它来装到一台机器上时，这个系统就和你原来使用的一模一样。</p>
+<h1 id="卸载ubuntu"><a href="#卸载ubuntu" class="headerlink" title="卸载ubuntu"></a>卸载ubuntu</h1><p>有同学会说了，直接windows进入磁盘管理把linux的磁盘分区给删了格式化了，linux不就删了吗，这样是可以，但是在bios中的启动条目还是原来的ubuntu，这就需要我们清理干净了。下面进入windows界面开始操作：</p>
+<ul>
+<li>win+x选择（windows PowerShell（管理员））</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">diskpart					<span class="hljs-comment"># 进入系统dispart组件</span><br><span class="hljs-built_in">list</span> disk					<span class="hljs-comment"># 查看系统所有磁盘，并找到window系统所安装的磁盘,（会出现列表，比如你有两个硬盘，０和１）</span><br>select disk $				<span class="hljs-comment"># 选择磁盘 $ 指window所安装的磁盘（列表，磁盘后的数字）(例如select disk 0)</span><br><span class="hljs-built_in">list</span> partition				<span class="hljs-comment"># 找到类型为系统的分区（列表会显示）</span><br>select partition $			<span class="hljs-comment"># $为类型为系统的分区　（例如select partition 0）</span><br>assign letter=p				<span class="hljs-comment"># 将分区分配到磁盘P中，p是直接写得，不和c，d，e等盘冲突就可以了</span><br>exit 						<span class="hljs-comment"># 退出diskpat</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li><p>此时我们会多出一个P盘，且没有访问权限，可以右击记事本以管理员身份运行，然后左上角文件打开P盘，找到EFI中的ubuntu文件夹并删除，其余不要动。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210425024026265.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMjg5NzEx,size_16,color_FFFFFF,t_70" srcset="/Pages/img/loading.gif" lazyload alt="以管理员身份运行记事本"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210425024055612.png" srcset="/Pages/img/loading.gif" lazyload alt="P盘"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210425024117531.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMjg5NzEx,size_16,color_FFFFFF,t_70" srcset="/Pages/img/loading.gif" lazyload alt="P:EFI"></p>
+</li>
+<li><p>此时再次回到命令行操作，将P盘删掉：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">diskpart 					<span class="hljs-comment"># 再次进入到diskpart</span><br>select  disk $				<span class="hljs-comment"># $是之前选择的盘符，如果记不住了，用list disk查看</span><br>select	partition	$		<span class="hljs-comment"># $是之前选择的分区，如果记不住了，用list partition查看</span><br>remove letter=p 			<span class="hljs-comment"># 删除P盘，</span><br>exit						<span class="hljs-comment"># 退出</span><br><br></code></pre></td></tr></table></figure>
+<p>然后进入磁盘管理，将linux的盘区清理干净，删除卷，使其成为未分配状态。</p>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20210425024558175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMjg5NzEx,size_16,color_FFFFFF,t_70" srcset="/Pages/img/loading.gif" lazyload alt="此电脑-管理"></p>
+<p><img src="https://img-blog.csdnimg.cn/2021042502463313.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMjg5NzEx,size_16,color_FFFFFF,t_70" srcset="/Pages/img/loading.gif" lazyload alt="磁盘管理"></p>
+<h1 id="重装ubuntu"><a href="#重装ubuntu" class="headerlink" title="重装ubuntu"></a>重装ubuntu</h1><p>下面这是我几个月前装的时候的做法，这里不赘述了<br>如何安装windows和linux双系统: <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43289711/article/details/110312956">https://blog.csdn.net/qq_43289711/article/details/110312956</a>.<br>大家进去看的时候一到在压缩卷的时候多压一点，至少50G才够用！！</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/Pages/categories/%E5%8F%8C%E7%B3%BB%E7%BB%9F/">双系统</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/Pages/tags/iso/">iso</a>
+                    
+                      <a class="hover-with-bg" href="/Pages/tags/systemback/">systemback</a>
+                    
+                      <a class="hover-with-bg" href="/Pages/tags/cdrtools/">cdrtools</a>
+                    
+                      <a class="hover-with-bg" href="/Pages/tags/%E5%8D%B8%E8%BD%BDubuntu/">卸载ubuntu</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a>，除<a href="/Pages/links/" rel="nofollow noopener">友链</a>外 ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/Pages/2021/04/25/2021-04-26-linux%E6%A0%B9%E7%9B%AE%E5%BD%95%E7%A9%BA%E9%97%B4%E5%A4%AA%E5%B0%8F%E9%9C%80%E8%A6%81%E9%87%8D%E8%A3%85%E5%B9%B6%E4%BF%9D%E7%95%99%E5%8E%9F%E6%9C%89%E6%95%B0%E6%8D%AE%E5%92%8C%E7%8E%AF%E5%A2%83/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">双系统之重装linux系统并保持原软件和配置不变(亲测好用推荐)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Pages/2021/04/24/2021-04-24-%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/">
+                        <span class="hidden-mobile">区块链的简单实现</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "sOQa0Q9dBtBOIwXYirJ82qTB-gzGzoHsz",
+          app_key: "cqPbqcwI3FzKqRTjdG9TBzJp",
+          placeholder: "说点什么...",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: true,
+          serverURLs: "https://prprjan9.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://github.com/Lixingwei0623" target="_blank" rel="nofollow noopener"><span>LiXingwei</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/LiXingweiBlog/Pages" target="_blank" rel="nofollow noopener"><span>Blog</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/Pages/js/events.js" ></script>
+<script  src="/Pages/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/Pages/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/Pages/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/Pages/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/Pages/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/Pages/js/boot.js" ></script>
+
+
+</body>
+</html>

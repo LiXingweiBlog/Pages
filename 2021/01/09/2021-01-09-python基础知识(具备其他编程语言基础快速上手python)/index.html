@@ -1,0 +1,752 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/Pages/img/profile.jpg">
+  <link rel="icon" href="/Pages/img/profile.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="编程路上的记录">
+  <meta name="author" content="长理小生">
+  <meta name="keywords" content="编程">
+  
+  <title>python基础知识 - 长理小生</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/Pages/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/Pages/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lixingweiblog.github.io","root":"/Pages/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"pRpRjan9BBxQaky0Ju0Xe0i3-gzGzoHsz","app_key":"MIECgEde4A36Vmp0KxL2TMkl","server_url":"https://prprjan9.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/Pages/js/utils.js" ></script>
+  <script  src="/Pages/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/Pages/">&nbsp;<strong>长理小生</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/Pages/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="python基础知识">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      长理小生
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-01-09 14:27" pubdate>
+        2021年1月9日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      23
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">python基础知识</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：1 小时前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>==前言：本文适合具备C、java等语言基础的python初学者==</p>
+<h1 id="一、python简介"><a href="#一、python简介" class="headerlink" title="一、python简介"></a>一、python简介</h1><h2 id="1-优势与特点："><a href="#1-优势与特点：" class="headerlink" title="1.优势与特点："></a>1.优势与特点：</h2><ol>
+<li>代码开源；</li>
+<li>代码像自然语言一样易懂；</li>
+<li>适用于短周期开发的日常任务；</li>
+<li>代码优雅、简单、明确；</li>
+<li>代码量少；</li>
+<li>面向对象；</li>
+<li>有强大的标准库和第三方模块；</li>
+<li>可扩展性好，能很方便的调用其他语言；</li>
+</ol>
+<h2 id="2-开发环境"><a href="#2-开发环境" class="headerlink" title="2.开发环境"></a>2.开发环境</h2><p>python的源程序是特殊格式的文本文件，所有的文本编辑器都可以直接编辑python代码，python是解释执行的，目前最常用的解释器是python2和python3。<br>在linux下运行python十分便捷，编写好后，中端直接输入python+filename即可。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210109111436920.png" srcset="/Pages/img/loading.gif" lazyload alt="执行python程序"></p>
+<p>也可以直接输入python，交互式的执行python语句。</p>
+<p><img src="https://img-blog.csdnimg.cn/2021010911160666.png" srcset="/Pages/img/loading.gif" lazyload alt="交互式python"></p>
+<p>不过，最常用的IDE还是pycharm，之后的演示均转移到pycharm上。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210109112022753.png" srcset="/Pages/img/loading.gif" lazyload alt="pycharm"></p>
+<h1 id="二、python基本数据类型"><a href="#二、python基本数据类型" class="headerlink" title="二、python基本数据类型"></a>二、python基本数据类型</h1><p>Python 中的变量不需要声明。每个变量在使用前都必须赋值，变量赋值以后该变量才会被创建。变量的类型不会显示的声明</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-comment">#注释：python中使用#来表示单行注释</span><br><br><span class="hljs-attr">num1</span>=<span class="hljs-number">100</span>    <span class="hljs-comment">#整形变量</span><br><span class="hljs-attr">num2</span>=<span class="hljs-number">100.0</span>	<span class="hljs-comment">#浮点型</span><br><span class="hljs-attr">numString</span>=<span class="hljs-string">&quot;123&quot;</span>	<span class="hljs-comment">#字符串</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="标准数据类型："><a href="#标准数据类型：" class="headerlink" title="标准数据类型："></a>标准数据类型：</h2><ul>
+<li>Number（数字）<ul>
+<li>String（字符串）</li>
+<li>List（列表）</li>
+<li>Tuple（元组）</li>
+<li>Set（集合）</li>
+<li>Dictionary（字典）</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-Number（数字）"><a href="#1-Number（数字）" class="headerlink" title="1.Number（数字）"></a>1.Number（数字）</h3><p>Python3 支持 int、float、bool、complex（复数）</p>
+<pre><code>a, b, c, d = 20, 5.5, True, 4+3j
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20210109115524597.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMjg5NzEx,size_16,color_FFFFFF,t_70" srcset="/Pages/img/loading.gif" lazyload alt="自动分派数据类型"></p>
+<p>数值运算：</p>
+<pre><code>1+1    #加法    
+2.1-1    #减法
+2.1*2    #乘法
+2/4     #除法
+7//4    #整除，此结果为1
+7%4    #取余
+2**10    #n次方运算，此结果为1024
+</code></pre>
+<h3 id="String（字符串）"><a href="#String（字符串）" class="headerlink" title="String（字符串）"></a>String（字符串）</h3><p>Python中的字符串用单引号 ‘ 或双引号 “ 括起来，同时使用反斜杠 \ 转义特殊字符。</p>
+<p>索引值以 0 为开始值，-1 为从末尾的开始位置。</p>
+<pre><code>str=&quot;hellopython&quot;
+print(str[0:4])
+print(str[1:-1])
+print(str[2:])
+print(str+&quot;hellostring&quot;)
+</code></pre>
+<p>运行结果：</p>
+<pre><code>hell
+ellopytho
+llopython
+hellopythonhellostring
+</code></pre>
+<h3 id="List（列表）"><a href="#List（列表）" class="headerlink" title="List（列表）"></a>List（列表）</h3><p>列表可以完成大多数集合类的数据结构实现。列表中元素的类型可以不相同，它支持数字，字符串甚至可以包含列表（所谓嵌套）。</p>
+<p>列表是写在方括号 [] 之间、用逗号分隔开的元素列表。</p>
+<p>和字符串一样，列表同样可以被索引和截取，列表被截取后返回一个包含所需元素的新列表。</p>
+<pre><code>onelist = [&quot;abc&quot; , 12, 1.2 , True ]
+print(onelist[0:2])
+print(onelist[1:-1])
+print(onelist[2:])
+print(onelist + onelist[0:2])
+</code></pre>
+<p>运行结果如下</p>
+<pre><code>[&#39;abc&#39;, 12]
+[12, 1.2]
+[1.2, True]
+[&#39;abc&#39;, 12, 1.2, True, &#39;abc&#39;, 12]
+</code></pre>
+<h3 id="Tuple（元组）"><a href="#Tuple（元组）" class="headerlink" title="Tuple（元组）"></a>Tuple（元组）</h3><p>元组（tuple）与列表类似，不同之处在于元组的元素不能修改。元组写在小括号 () 里，元素之间用逗号隔开。</p>
+<pre><code>tuple = ( &#39;abcd&#39;, 786 , 2.23, &#39;runoob&#39;, 70.2  )
+tinytuple = (123, &#39;runoob&#39;)
+
+print (tuple)             # 输出完整元组
+print (tuple[0])          # 输出元组的第一个元素
+print (tuple[1:3])        # 输出从第二个元素开始到第三个元素
+print (tuple[2:])         # 输出从第三个元素开始的所有元素
+print (tinytuple * 2)     # 输出两次元组
+print (tuple + tinytuple) # 连接元组
+</code></pre>
+<p>运行结果：</p>
+<pre><code>(&#39;abcd&#39;, 786, 2.23, &#39;runoob&#39;, 70.2)
+abcd
+(786, 2.23)
+(2.23, &#39;runoob&#39;, 70.2)
+(123, &#39;runoob&#39;, 123, &#39;runoob&#39;)
+(&#39;abcd&#39;, 786, 2.23, &#39;runoob&#39;, 70.2, 123, &#39;runoob&#39;)
+</code></pre>
+<h3 id="Set（集合）"><a href="#Set（集合）" class="headerlink" title="Set（集合）"></a>Set（集合）</h3><p>里面的元素不允许重复，重复元素会被自动删除<br>可以使用大括号 { } 或者 set() 函数创建集合</p>
+<pre><code>a = &#123;&quot;csdn&quot;,&quot;zhihu&quot;,&quot;csdn&quot;&#125;
+b = &#123;&quot;baidu&quot;,&quot;tencent&quot;,&quot;csdn&quot;&#125;
+print(a)
+print(a-b)    #a集合减去a,b的交集
+print(a|b)    #a，b集合的并集
+print(a&amp;b)    #a，b集合的交集
+print(a^b)    #a，b两集合中各自不同的元素组成的集合
+</code></pre>
+<p>运行结果如下：</p>
+<pre><code>&#123;&#39;zhihu&#39;, &#39;csdn&#39;&#125;
+&#123;&#39;zhihu&#39;&#125;
+&#123;&#39;csdn&#39;, &#39;baidu&#39;, &#39;tencent&#39;, &#39;zhihu&#39;&#125;
+&#123;&#39;csdn&#39;&#125;
+&#123;&#39;baidu&#39;, &#39;zhihu&#39;, &#39;tencent&#39;&#125;
+</code></pre>
+<h3 id="Dictionary（字典）"><a href="#Dictionary（字典）" class="headerlink" title="Dictionary（字典）"></a>Dictionary（字典）</h3><p>字典是一种映射类型，字典用 { } 标识，它是一个无序的 键(key) : 值(value) 的集合。</p>
+<pre><code>dict = &#123;&#125;    #空字典
+dict[&#39;one&#39;] = &quot;1 - CSDN&quot;
+dict[2]     = &quot;2 - csdn&quot;
+
+tinydict = &#123;&#39;name&#39;: &#39;csdn&#39;,&#39;code&#39;:1, &#39;site&#39;: &#39;www.csdn.net&#39;&#125;
+
+print (dict[&#39;one&#39;])       # 输出键为 &#39;one&#39; 的值
+print (dict[2])           # 输出键为 2 的值
+print (tinydict)          # 输出完整的字典
+print (tinydict.keys())   # 输出所有键
+print (tinydict.values()) # 输出所有值
+</code></pre>
+<p>运行结果：</p>
+<pre><code>1 - CSDN
+2 - csdn
+&#123;&#39;name&#39;: &#39;csdn&#39;, &#39;code&#39;: 1, &#39;site&#39;: &#39;www.csdn.net&#39;&#125;
+dict_keys([&#39;name&#39;, &#39;code&#39;, &#39;site&#39;])
+dict_values([&#39;csdn&#39;, 1, &#39;www.csdn.net&#39;])
+</code></pre>
+<h1 id="三、逻辑控制"><a href="#三、逻辑控制" class="headerlink" title="三、逻辑控制"></a>三、逻辑控制</h1><h2 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h2><pre><code>if condition_1:
+    statement_block_1
+elif condition_2:
+    statement_block_2
+else:
+    statement_block_3
+</code></pre>
+<p>注意if后面不需要()来包裹条件，不需要{}来包裹语句，注意要加<code>:</code>，注意控制缩进来代替{}。</p>
+<h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><pre><code>sum = 0
+counter = 1
+while counter &lt;= 100:
+    sum = sum + counter
+    counter += 1
+</code></pre>
+<p>与C语言、java的while循环大同小异</p>
+<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><pre><code>#从容器中逐个取元素至x中，直至取完
+languages = [&quot;C&quot;, &quot;C++&quot;, &quot;Perl&quot;, &quot;Python&quot;]
+for x in languages:
+    print (x)
+</code></pre>
+<h3 id="range-函数"><a href="#range-函数" class="headerlink" title="range()函数"></a>range()函数</h3><p>for循环常与range()函数搭配使用，range()可以生成一个数字序列</p>
+<pre><code>for i in range(5):
+    print(i)
+for i in range(5,9):
+    print(i)
+for i in range(0,10,3):
+    print(i)
+</code></pre>
+<p>生成的序列分别是：</p>
+<pre><code>0,1,2,3,4
+5,6,7,8
+0,3,6,9
+</code></pre>
+<h2 id="break和continue语句"><a href="#break和continue语句" class="headerlink" title="break和continue语句"></a>break和continue语句</h2><p>break 语句可以跳出 for 和 while 的循环体。如果你从 for 或 while 循环中终止，任何对应的循环 else 块将不执行。</p>
+<p>continue 语句被用来告诉 Python 跳过当前循环块中的剩余语句，然后继续进行下一轮循环。</p>
+<h1 id="四、函数"><a href="#四、函数" class="headerlink" title="四、函数"></a>四、函数</h1><p>函数是组织好的，可重复使用的，用来实现单一，或相关联功能的代码段。</p>
+<p>自定义函数：</p>
+<pre><code>def max(a,b):
+    if a&gt;b:
+        return a
+    else:
+        return b
+</code></pre>
+<p>注意一定控制好缩进，缩进的对齐代替了其他语言的{}，另外函数结束一定有<code>return</code>语句，<code>return</code>后面不跟值表示没有返回值。</p>
+<p>注意定义好函数后只有调用函数，函数代码才会执行，调用方式例如：<code>c=max(3.14,3.15)</code></p>
+<h1 id="五、输入输出"><a href="#五、输入输出" class="headerlink" title="五、输入输出"></a>五、输入输出</h1><pre><code>str = input(&quot;输入提示，例如请输入：&quot;)
+print(str)
+</code></pre>
+<h1 id="六、类和对象"><a href="#六、类和对象" class="headerlink" title="六、类和对象"></a>六、类和对象</h1><pre><code>class Student:
+    def __init__(self,na):
+        self.name=na
+    name=&quot;zhangsan&quot;
+    def getName(self):
+        return self.name
+</code></pre>
+<p>上面设计了一个Student类，其中<code>__init()__</code>是构造函数，<code>self</code>是创建对象是自身的引用，相当于java中的<code>this</code>,所有类的方法都需要包含该形参。<br>私有属性或方法只需以双下划线开头即可<br>如<code>__name</code>和<code>def __getName(self)</code></p>
+<h2 id="类的实例化"><a href="#类的实例化" class="headerlink" title="类的实例化"></a>类的实例化</h2><pre><code>stu=Student(&quot;李四&quot;)
+</code></pre>
+<h2 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h2><p>在定义类时只需在<code>()</code>中写出需要继承的父类即可，可以继承多个父类，如：</p>
+<pre><code>class Student(People):
+    #类的属性方法等
+
+class A(B,C):
+    #类的属性方法
+</code></pre>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/Pages/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                      <a class="hover-with-bg" href="/Pages/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
+                    
+                      <a class="hover-with-bg" href="/Pages/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/python/">python</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/Pages/tags/%E5%85%A5%E9%97%A8/">入门</a>
+                    
+                      <a class="hover-with-bg" href="/Pages/tags/python/">python</a>
+                    
+                      <a class="hover-with-bg" href="/Pages/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">数据类型</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a>，除<a href="/Pages/links/" rel="nofollow noopener">友链</a>外 ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/Pages/2021/02/20/2021-02-20-Node.js%E5%9F%BA%E7%A1%80/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">node.js初学</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Pages/2020/12/17/2020-12-17-Linux%E4%B8%8B%E7%9A%84C%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8%EF%BC%88ubuntu%E4%B8%BA%E4%BE%8B%EF%BC%89/">
+                        <span class="hidden-mobile">Linux下的C语言入门（以ubuntu为例）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "sOQa0Q9dBtBOIwXYirJ82qTB-gzGzoHsz",
+          app_key: "cqPbqcwI3FzKqRTjdG9TBzJp",
+          placeholder: "说点什么...",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: true,
+          serverURLs: "https://prprjan9.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://github.com/Lixingwei0623" target="_blank" rel="nofollow noopener"><span>LiXingwei</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/LiXingweiBlog/Pages" target="_blank" rel="nofollow noopener"><span>Blog</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/Pages/js/events.js" ></script>
+<script  src="/Pages/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/Pages/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/Pages/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/Pages/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/Pages/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/Pages/js/boot.js" ></script>
+
+
+</body>
+</html>

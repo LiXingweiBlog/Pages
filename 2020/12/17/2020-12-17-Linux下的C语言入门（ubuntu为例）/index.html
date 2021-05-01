@@ -1,0 +1,657 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/Pages/img/profile.jpg">
+  <link rel="icon" href="/Pages/img/profile.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="编程路上的记录">
+  <meta name="author" content="长理小生">
+  <meta name="keywords" content="编程">
+  
+  <title>Linux下的C语言入门（以ubuntu为例） - 长理小生</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/Pages/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/Pages/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lixingweiblog.github.io","root":"/Pages/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"pRpRjan9BBxQaky0Ju0Xe0i3-gzGzoHsz","app_key":"MIECgEde4A36Vmp0KxL2TMkl","server_url":"https://prprjan9.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/Pages/js/utils.js" ></script>
+  <script  src="/Pages/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/Pages/">&nbsp;<strong>长理小生</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Pages/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/Pages/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Linux下的C语言入门（以ubuntu为例）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      长理小生
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-12-17 18:03" pubdate>
+        2020年12月17日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux下的C语言入门（以ubuntu为例）</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：1 小时前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="一、编辑器vi-vim"><a href="#一、编辑器vi-vim" class="headerlink" title="一、编辑器vi(vim)"></a>一、编辑器vi(vim)</h1><p>vi是最常用的文本编辑器，我们可以使用它来编写C语言代码。</p>
+<pre><code>vi hello.c    //编辑一个名为hello.c的文件
+</code></pre>
+<p>进入vi编辑器后，有两种模式：命令模式、插入模式。<br>一进来就时命令模式，输入i在当前光标处开始插入字符，可以用上下左右箭头控制输入。摁<code>esc</code>键可回到命令模式，下面介绍命令模式下几种常用的命令：</p>
+<pre><code>3 dd    //将光标所在行往下共3行代码剪切
+3 yy    //将光标所在行往下共3行代码复制
+p    //粘贴
+:set nu    //显示行号
+:sp filename    //新建一个文件并打开编辑窗口
+:wq    //保存并退出
+:q    //退出
+:q!    //强制退出
+</code></pre>
+<h1 id="二、编译命令"><a href="#二、编译命令" class="headerlink" title="二、编译命令"></a>二、编译命令</h1><pre><code>//将hello.c编译，编译输出文件名为hello.out
+gcc hello.c -o hello.out    
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201217110149954.png" srcset="/Pages/img/loading.gif" lazyload alt="编译"></p>
+<p>编译完成后，就可以运行hello.out文件：</p>
+<pre><code>./hello.out
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201217110411114.png" srcset="/Pages/img/loading.gif" lazyload alt="运行"></p>
+<h1 id="三、使用gdb调试代码"><a href="#三、使用gdb调试代码" class="headerlink" title="三、使用gdb调试代码"></a>三、使用gdb调试代码</h1><p>注意要使用gdb来调试代码，在我们编译的时候，编译命令要多加一个参数<code>-g</code>，格式如下：</p>
+<pre><code>gcc hello.c -o hello.out -g
+</code></pre>
+<p>然后就可以对程序调试了：</p>
+<pre><code>gdb hello.out
+</code></pre>
+<p>然后进入到调试环境（gdb）,我们下面介绍一些基本的调试命令：</p>
+<pre><code>l    //显示源代码
+start    //开始调试，可以运行到下一个断点
+break 6    //在第六行添加一个断点
+break max    //在函数max的起始位置添加断点
+info break    //显示所有断点
+delete numofBreak    //删除编号为numofBreak的断点
+n    //执行一行语句，注意不进入函数内部
+s    //执行一行语句，遇到函数会进入函数内部
+finish    //执行完当前函数
+p a    //查看变量a的值
+p &amp;a    //查看变量a的地址
+bt    //查看函数栈，可以看到函数序号
+f 1    //切换到序号为的1的函数
+q    //退出gdb调试
+</code></pre>
+<h1 id="四、多文件编译及makefile的使用"><a href="#四、多文件编译及makefile的使用" class="headerlink" title="四、多文件编译及makefile的使用"></a>四、多文件编译及makefile的使用</h1><p>命令格式：</p>
+<pre><code>gcc hello1.c hello2.c hello12.c -o hello.out -g
+</code></pre>
+<p>在hello1.c,hello2.c,hello12.c里的函数可以相互调用，当我们的源文件有很多很多时，每次都手动输入这些命令麻烦且容易出错，因此我们要使用make工具来管理这些编译命令，以达到快捷编译的效果。<br>使用方式：新建一个makefile文件，然后在里面编写内容：</p>
+<pre><code>/*格式：
+ *    outputfilename:file1 file2 file3
+ *    |&lt;- tab-&gt;| gcc file1 file2 file3 -o outputfilename -g
+ *解释：
+ *    第一行是代表编译生成outputfilename文件所需要那些文件
+ *    第二行是编译命令，注意其前面一定要有一个tab
+ *注意：
+ *    在第一行中如果存在非.c的文件，
+ *    需要下面按着格式写明该文件的编译
+ */
+
+hello.out:hello1.o hello2.o hello12.c
+        gcc hello1.o hello2.o hello12.c -o hello.out -g
+        
+hello1.o:hello1.c
+        gcc hello1.c -o hello1.o -g
+        
+hello2.0:hello2.c
+        gcc hello2.c -o hello2.o -g
+</code></pre>
+<p>当makefile文件编写保存好之后，只需输入<code>make</code>命令就可快捷地进行编译。</p>
+<h1 id="五、拓展知识"><a href="#五、拓展知识" class="headerlink" title="五、拓展知识"></a>五、拓展知识</h1><p>linux下的命令也是一个个C语言的小程序，执行命令时会调用相应的程序</p>
+<h2 id="1-main-的真实写法应为："><a href="#1-main-的真实写法应为：" class="headerlink" title="1.main()的真实写法应为："></a>1.main()的真实写法应为：</h2><pre><code>/*    
+ *    argv代表argc数组的长度，argc里面存储的是终端输入的命令，
+ *    每一个空格即增加一个长度，比如命令ls -l，该命令就会
+ *    存入argc数组中，而argv为2
+ */
+int main(int argv,char* argc[])
+</code></pre>
+<h2 id="2-main函数中的return值代表该运行的成功与否"><a href="#2-main函数中的return值代表该运行的成功与否" class="headerlink" title="2.main函数中的return值代表该运行的成功与否"></a>2.main函数中的return值代表该运行的成功与否</h2><pre><code>return 0;//运行正常
+return 110;//返回110号错误
+</code></pre>
+<h2 id="3-两条命令之间可以用-amp-amp-来连接"><a href="#3-两条命令之间可以用-amp-amp-来连接" class="headerlink" title="3.两条命令之间可以用&amp;&amp;来连接"></a>3.两条命令之间可以用<code>&amp;&amp;</code>来连接</h2><p>第二条命令则仅在第一条命令执行成功的情况下执行。</p>
+<h2 id="4-linux将所有的资源或设备均看作一个文件"><a href="#4-linux将所有的资源或设备均看作一个文件" class="headerlink" title="4.linux将所有的资源或设备均看作一个文件"></a>4.linux将所有的资源或设备均看作一个文件</h2><p>比如标准输出输入流、错误流分别对应<code>stdout</code>、<code>stdin</code>、<code>stderr</code>三个文件，C语言中一旦引入stdio库就引入这三个文件。</p>
+<pre><code>//printf(&quot;please input&quot;);
+fprintf(stdout,&quot;please input&quot;);
+fscanf(stdin,&quot;%d&quot;,&amp;a);
+fprintf(stderr,&quot;errormessage&quot;);
+/*    
+ *    注意上面的代码中的stdout,stdin,stderr
+ *    可以用任何其他文件替代
+ */
+</code></pre>
+<h2 id="5-重定向"><a href="#5-重定向" class="headerlink" title="5.重定向"></a>5.重定向</h2><p><code>./a.out 1&gt;&gt; a.txt</code><br>上面的命令可以将a.out的正确的输出流stdout里的内容输出到a.txt中，<code>&gt;&gt;</code>是追加形式，<code>&gt;</code>是覆盖的形式</p>
+<p><code>./a.out &lt; input.txt</code><br>从input.txt中读取输入流</p>
+<p><code>./a.out 1&gt; a.txt 2&gt; b.txt &lt;input.txt</code><br>表示正确的输出流输出到a.txt，错误的输出流输出到b.txt，并从input.txt中读取输入流</p>
+<h2 id="6-管道"><a href="#6-管道" class="headerlink" title="6.管道"></a>6.管道</h2><p><code>ls /etc/ |grep ab</code><br>命令的意思是将<code>ls /etc/</code>命令的输出当作<code>grep ab</code>命令的输入，这样就可以列出/etc/目录下所有包含ab的文件或目录</p>
+<p><code>ps -e | grep ssh</code><br><code>ps</code>是列出当前运行的进程，上述命令即为列出包含ssh的内容</p>
+<h2 id="7-操作系统对内存的管理"><a href="#7-操作系统对内存的管理" class="headerlink" title="7.操作系统对内存的管理"></a>7.操作系统对内存的管理</h2><p><img src="https://img-blog.csdnimg.cn/20201217175313937.png" srcset="/Pages/img/loading.gif" lazyload alt="操作系统内存示意"></p>
+<p>注意：其中栈底是高地址，栈顶是低地址。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/Pages/categories/linux/">linux</a>
+                    
+                      <a class="hover-with-bg" href="/Pages/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                      <a class="hover-with-bg" href="/Pages/categories/C%E8%AF%AD%E8%A8%80/">C语言</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/Pages/tags/linux/">linux</a>
+                    
+                      <a class="hover-with-bg" href="/Pages/tags/C%E8%AF%AD%E8%A8%80/">C语言</a>
+                    
+                      <a class="hover-with-bg" href="/Pages/tags/%E5%85%A5%E9%97%A8/">入门</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a>，除<a href="/Pages/links/" rel="nofollow noopener">友链</a>外 ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/Pages/2021/01/09/2021-01-09-python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%85%B7%E5%A4%87%E5%85%B6%E4%BB%96%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bpython)/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">python基础知识</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Pages/2020/12/15/2020-12-15-%E3%80%8A%E7%8E%8B%E4%BA%A1%E6%96%BC%E6%B1%9F%E4%B8%8A%E3%80%8B%E4%B9%8B%E5%91%A8%E6%98%AD%E7%8E%8B%E5%A7%AC%E7%91%95/">
+                        <span class="hidden-mobile">王亡於江上之周昭王姬瑕</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "sOQa0Q9dBtBOIwXYirJ82qTB-gzGzoHsz",
+          app_key: "cqPbqcwI3FzKqRTjdG9TBzJp",
+          placeholder: "说点什么...",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: true,
+          serverURLs: "https://prprjan9.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://github.com/Lixingwei0623" target="_blank" rel="nofollow noopener"><span>LiXingwei</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/LiXingweiBlog/Pages" target="_blank" rel="nofollow noopener"><span>Blog</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/Pages/js/events.js" ></script>
+<script  src="/Pages/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/Pages/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/Pages/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/Pages/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/Pages/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/Pages/js/boot.js" ></script>
+
+
+</body>
+</html>
