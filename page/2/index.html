@@ -194,6 +194,63 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/Pages/2021/04/08/2021-04-21-linux%E4%B8%8Bidea%E3%80%81pycharm%E7%AD%89%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87%E6%8B%BC%E9%9F%B3%E6%97%B6%E6%BB%A13%E4%B8%AA%E5%AD%97%E6%AF%8D%E5%90%8E%E6%97%A0%E6%B3%95%E7%BB%A7%E7%BB%AD%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%EF%BC%88%E9%97%AE%E9%A2%98%E5%B8%A6%E5%9B%BE%E6%8F%8F%E8%BF%B0%EF%BC%81%EF%BC%81%EF%BC%89/" target="_self">
+          linux下idea、pycharm等输入中文拼音时满3个字母后无法继续拼音输入
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/Pages/2021/04/08/2021-04-21-linux%E4%B8%8Bidea%E3%80%81pycharm%E7%AD%89%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87%E6%8B%BC%E9%9F%B3%E6%97%B6%E6%BB%A13%E4%B8%AA%E5%AD%97%E6%AF%8D%E5%90%8E%E6%97%A0%E6%B3%95%E7%BB%A7%E7%BB%AD%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%EF%BC%88%E9%97%AE%E9%A2%98%E5%B8%A6%E5%9B%BE%E6%8F%8F%E8%BF%B0%EF%BC%81%EF%BC%81%EF%BC%89/" target="_self">
+          
+          
+            
+          
+          问题描述：idea输入中文，没输入几个拼音就好像自动回车，有时得到几个字母，然后就不能输入拼音了。
+遇到这个情况就导致输入中文特别困难，可以采取：
+修改idea.sh和pycharm.sh文件来改变语言输入设置。找到自己idea或pycharm安装的地方，/bin/idea.sh
+编辑idea.sh文件，在最后新增以下几行代码：12345export XIM=&quot;ibus&quot;exp
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-08 22:30" pubdate>
+              2021-04-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/Pages/categories/%E9%97%AE%E9%A2%98/">问题</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/Pages/tags/%E9%94%99%E8%AF%AF/">错误</a>
+            
+              <a href="/Pages/tags/idea/">idea</a>
+            
+              <a href="/Pages/tags/%E8%AE%BE%E7%BD%AE/">设置</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/Pages/2021/04/08/2021-04-08-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80(%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86)/" target="_self">
           密码学基础
         </a>
@@ -761,71 +818,11 @@ vi hello.c    //编辑一个名为hello.c的文件
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/Pages/2020/11/29/2020-11-29-%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85windows%E5%92%8Clinux%E5%8F%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%9F/" target="_self">
-          如何安装windows和linux双操作系统？
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/Pages/2020/11/29/2020-11-29-%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85windows%E5%92%8Clinux%E5%8F%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%9F/" target="_self">
-          
-          
-            
-          
-          目标：在已经安装了windows操作系统的情况下，安装一个ubuntu桌面版，以便每次在开机时可以选择要使用的操作系统。
-一、win压缩卷：这一步是从磁盘中分割空间供linux系统使用。
-1.右键此电脑，选择管理，选择磁盘管理。
-
-2.挑选一个磁盘然后右击选择压缩卷，空间大小自己确定。注意：至少10G，建议50G及以上。
-
-二、下载复刻工具和iso光盘映像文件：我们需要下载的资源包如图：ubunt
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-11-29 15:03" pubdate>
-              2020-11-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/Pages/categories/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/">系统安装</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/Pages/tags/%E5%8F%8C%E7%B3%BB%E7%BB%9F/">双系统</a>
-            
-              <a href="/Pages/tags/linux/">linux</a>
-            
-              <a href="/Pages/tags/ubuntu/">ubuntu</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/Pages/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/Pages/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/Pages/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/Pages/">1</a><span class="page-number current">2</span><a class="page-number" href="/Pages/page/3/#board">3</a><a class="extend next" rel="next" href="/Pages/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

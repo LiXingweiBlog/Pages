@@ -53,6 +53,45 @@
   
   
   <entry>
+    <title>Talent Management System</title>
+    <link href="/Pages/2021/06/15/2021-06-15-Java%E5%B8%B8%E7%94%A8%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/"/>
+    <url>/Pages/2021/06/15/2021-06-15-Java%E5%B8%B8%E7%94%A8%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Java源码解析-一"><a href="#Java源码解析-一" class="headerlink" title="Java源码解析(一)"></a>Java源码解析(一)</h1><h2 id="一、关键字"><a href="#一、关键字" class="headerlink" title="一、关键字"></a>一、关键字</h2><h3 id="volatile-可见的"><a href="#volatile-可见的" class="headerlink" title="volatile 可见的"></a>volatile 可见的</h3><p>在多线程场景下，由该关键字修饰的共享变量被某一个线程修改后就会通知到其他线程，避免其他线程依旧从自己的私有空间拿已经过期的变量的缓存值。</p><h3 id="transient-无需序列化"><a href="#transient-无需序列化" class="headerlink" title="transient 无需序列化"></a>transient 无需序列化</h3><p>该关键字修饰的变量不会被序列化，比如toString()就不会将该变量加入进来</p><h3 id="default-默认实现"><a href="#default-默认实现" class="headerlink" title="default 默认实现"></a>default 默认实现</h3><p>一般用在接口之中修饰方法，可以在接口种写出该方法的默认实现，实现类就无需强制实现该方法</p><h3 id="native-引用外部实现"><a href="#native-引用外部实现" class="headerlink" title="native 引用外部实现"></a>native 引用外部实现</h3><p>被该关键字修饰的方法，说明该方法是使用其他语言实现的，大部分情况是C语言，会有相应的dll文件库供调用</p><h2 id="二、集合"><a href="#二、集合" class="headerlink" title="二、集合"></a>二、集合</h2><h3 id="1-ArrayList"><a href="#1-ArrayList" class="headerlink" title="1.ArrayList"></a>1.ArrayList</h3><blockquote><p>底层是数组，对于查询匹配的速度很快，删除的速度较慢</p></blockquote><ul><li>允许 put null 值，会自动扩容；</li><li><code>size</code>、<code>isEmpty</code>、<code>get</code>、<code>set</code>、<code>add</code> 等方法时间复杂度都是 O (1)；</li><li>是非线程安全的，多线程情况下，一般使用<code>CopyOnWriteArrayList</code>或者推荐使用线程安全类：<code>Collections.synchronizedList</code>；</li><li>增强 for 循环，或者使用迭代器迭代过程中，如果数组被改变（<code>modCount</code>变化），会快速失败，抛出异常。</li><li>扩容，每次扩大1.5倍，且默认初始容量为10，如果扩容一次则为15，最大不超过int型最大值。在拷贝时，最好先指定好目标集合的容量，拒绝for循环逐个add，这样会一直扩容影响性能。在一个<code>addAll()</code>执行时，如果自动扩容一次仍然不够，则直接扩容到目标大小。</li><li>删除，删除一个元素后，还要将后面的元素整体向前移动一位，用的是数组拷贝。所以在批量删除不要<code>for+remove</code>，而是采用<code>removeAll(list)</code>来进行删除</li></ul><h3 id="2-LinkedList"><a href="#2-LinkedList" class="headerlink" title="2.LinkedList"></a>2.LinkedList</h3><blockquote><p>底层是双向链表，新增删除的速度很快，查询的速度较慢</p></blockquote><p><img src="https://img-blog.csdnimg.cn/3614cbc87e7b4173ba0ca5e60b8f8021.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMjg5NzEx,size_16,color_FFFFFF,t_70" alt="双向链表"></p><ul><li>链表每个节点我们叫做 Node，Node 有 prev 属性，代表前一个节点的位置，next 属性，代表后一个节点的位置；</li><li>first 是双向链表的头节点，它的前一个节点是 null。</li><li>last 是双向链表的尾节点，它的后一个节点是 null；</li><li>当链表中没有数据时，first 和 last 是同一个节点，前后指向都是 null；</li><li>因为是个双向链表，只要机器内存足够强大，是没有大小限制的。</li><li>在节点查询时，会根据index的大小来决定从前面开始还是从后面开始查</li><li>迭代器不是普通的，而是双向的ListIterator，除了<code>hasNext()</code>和<code>next()</code>外，还有<code>hasPrevious()</code>和<code>previous()</code></li></ul><h3 id="3-HashMap"><a href="#3-HashMap" class="headerlink" title="3.HashMap"></a>3.HashMap</h3><blockquote><p>底层是：java7里数组+链表，java8里是数组+(链表/红黑树)<br>链表长度超过8且数组大小超过64，链表自动变化为红黑树，当红黑树大小小于6时就又变回链表</p></blockquote><ul><li>允许 null 值，不同于 HashTable ，是线程不安全的；</li><li><code>load factor</code>（影响因子） 默认值是 0.75， 是均衡了时间和空间损耗算出来的值，较高的值<br>会减少空间开销（扩容减少，数组大小增长速度变慢），但增加了查找成本（hash 冲突增<br>加，链表长度变长），不扩容的条件：<code>数组容量*loadfactor &gt; 需要的数组大小</code>；</li><li>如果有很多数据需要储存到<code>HashMap</code>中，建议 <code>HashMap </code>的容量一开始就设置成足够的大小，这样可以防止在其过程中不断的扩容，影响性能；</li><li>HashMap 是非线程安全的，我们可以自己在外部加锁，或者通过<code>Collections.synchronizedMap </code>来实现线程安全，<code>Collections.synchronizedMap </code>的实现是在每个方法上加上了 <code>synchronized </code>锁；还可以使用<code>ConcurrentHashMap</code></li><li>在迭代过程中，如果<code>HashMap</code>的结构被修改，会快速失败，与<code>modCount</code>有关。<h4 id="向HashMap增加一个-key-value"><a href="#向HashMap增加一个-key-value" class="headerlink" title="向HashMap增加一个(key,value)"></a>向HashMap增加一个(key,value)</h4></li></ul><ol><li>计算出<code>key</code>的<code>hash</code>，根据hash寻找其对应的数组下标位置，一般是<code>index=hash%(length)</code>，而数组长度length一般是2的幂次，计算公式就是：<code>index=hash&amp;(length-1)</code></li><li>判断数组的index位置是否为空，为空则直接将<code>(key,value)</code>以及<code>hash</code>new进一个<code>Node</code>再放在数组的此位置，否则需要处理hash冲突</li><li>发生hash冲突，需要先判断此处是链表还是红黑树</li><li>如果是链表，则从头遍历链表，看是否有与key重复的节点，有就再根据是否覆盖进行覆盖，没有就new一个<code>Node</code>添加到链表尾部，并判断链表是否需要转化成红黑树</li><li>如果是红黑树，就用红黑树的方式新增，先看key是否存在于红黑树，判断依据是优先根据<code>compareTo()</code>其次根据<code>equals()</code>来判断是否相等，不相等则继续自旋寻找直到下一子节点为空，然后将新增节点放在下一个子节点，然后着色和旋转结束</li><li>无论何种方式新增一个值后，都要判断是否需要扩容，判断<code>数组容量*loadfactor &gt; 目前元素数量</code>是否成立，否则要扩容，扩容是新建一个2倍大的新数组，然后将原来的数据重新添加到新数组上</li></ol><h3 id="4-TreeMap"><a href="#4-TreeMap" class="headerlink" title="4.TreeMap"></a>4.TreeMap</h3><blockquote><p><code>TreeMap</code>的底层是红黑树，其原理和<code>HashMap</code>里的红黑树原理一样，不过<code>TreeMap</code>利用红黑树左小右大的特性来维护了一个整体根据<code>key</code>排序的<code>Map</code>，他的查找增加删除操作<code>containsKey</code>、<code>get</code>、<code>put</code>、<code>remove</code>都是<code>log(n)</code>复杂度，而HashMap的这些操作理想是<code>O(1)</code>复杂度</p></blockquote><p><code>TreeMap</code>的操作于<code>HashMap的红黑树</code>操作是一样的<br>增加：</p><ol><li>根据<code>compareTo()</code>来判断大小然后确定在左边还是右边，如果是本身则说明已经找到，则直接覆盖，否则就继续查找左边或右边（左小右大）</li><li>直到查找到叶子节点，则新增一个节点，然后着色、旋转，达到平衡结束</li></ol><h3 id="5-LinkedHashMap"><a href="#5-LinkedHashMap" class="headerlink" title="5.LinkedHashMap"></a>5.LinkedHashMap</h3><blockquote><p><code>LinkedHashMap</code>是<code>HashMap</code>的子类，它在<code>HashMap</code>的基础上增加了顺序。HashMap是没有顺序的，你很难给<code>HashMap</code>维护某种顺序，但是<code>LinkedHashMap</code>通过在<code>HashMap.Node</code>里增加<code>before</code>和<code>after</code>指针，将所有的节点串成了一个双向链表。</p></blockquote><p>以下两种顺序可以选择：（一经初始化后无法更改）</p><ul><li>按照插入顺序进行访问；</li><li>实现了访问最少最先删除功能，其目的是把很久都没有访问的 key 自动删除。</li></ul><p>实现插入顺序访问比较简单，只要每次插入都只插入到尾部即可实现。<br>访问最少最先删除功能，则在每次的<code>get</code>等访问操作里额外加一个将此元素放置到尾部即可。<br>虽然是双向链表，但它的迭代器只提供了从头往后访问。</p><h3 id="6-HashSet"><a href="#6-HashSet" class="headerlink" title="6.HashSet"></a>6.HashSet</h3><ol><li>底层实现基于 <code>HashMap</code>，所以迭代时不能保证按照插入顺序，或者其它顺序进行迭代；</li><li><code>add</code>、<code>remove</code>、<code>contanins</code>、<code>size </code>等方法的耗时性能，是不会随着数据量的增加而增加的，这个主要跟 <code>HashMap</code> 底层的数组数据结构有关，不管数据量多大，不考虑 <code>hash </code>冲突的情况下，时间复杂度都是<code> O (1)</code>；</li><li>线程不安全的，如果需要安全请自行加锁，或者使用<code>Collections.synchronizedSet</code>；</li><li>迭代过程中，如果数据结构被改变，会快速失败的，会抛出<code>ConcurrentModificationException </code>异常。</li></ol><p><code>HashMap</code>存储的<code>(key,value)</code>，而<code>HashSet</code>只需要存储<code>key</code>就可以了，所以它内部的<code>HashMap</code>的所有<code>value</code>都是指向同一个静态默认值，然后对增删改查进行简单封装一下就是<code>HashSet</code>了。<br>反倒是其构造函数比较有意思：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 对 HashMap 的容量进行了计算</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">HashSet</span><span class="hljs-params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;<br> map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;(Math.max((<span class="hljs-keyword">int</span>) (c.size()/<span class="hljs-number">0.75f</span>) + <span class="hljs-number">1</span>, <span class="hljs-number">16</span>));<br> addAll(c);<br>&#125;<br></code></pre></td></tr></table></figure><p>如果数据集的大小小于16，就构造一个16大小的HashMap，否则就构造一个恰好比不用扩容的大小</p><h3 id="7-TreeSet"><a href="#7-TreeSet" class="headerlink" title="7.TreeSet"></a>7.TreeSet</h3><p>TreeSet主要是对TreeMap的复用，但也有些功能是TreeMap复用的TreeSet</p><h3 id="8-java7和java8的区别"><a href="#8-java7和java8的区别" class="headerlink" title="8.java7和java8的区别"></a>8.java7和java8的区别</h3><ul><li>所有的List、Map、Set都增加了forEach()方法</li><li>List：ArrayList无参初始化时，java7默认初始化一个10大小的数组，而java8默认初始化一个空数组，直到第一次添加数据时再扩容至10</li><li>Map：HashMap由数组+链表变为数组+链表/红黑树，所以几乎所有方法都重新写了一遍；新增了<code>getOrDefault()</code>、<code>putIfAbsent()</code>、<code>compute()</code>、<code>computeIfPresent()</code>等方法；和ArrayList一样，初始化的数组大小为空，只有第一次新加值才扩容至16</li><li>java8的Arrays还增加了一些parallel开头的方法支持并行计算</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>Java</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>List</tag>
+      
+      <tag>Map</tag>
+      
+      <tag>Set</tag>
+      
+      <tag>HashMap</tag>
+      
+      <tag>源码</tag>
+      
+      <tag>集合</tag>
+      
+      <tag>Java</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>区块链原理（很详细很全面）</title>
     <link href="/Pages/2021/05/23/2021-5-23-%E5%8C%BA%E5%9D%97%E9%93%BE%E5%8E%9F%E7%90%86(%E7%BB%93%E5%90%88%E5%AE%9E%E9%99%85%E4%BE%8B%E5%AD%90%E8%BE%83%E8%AF%A6%E7%BB%86%E7%9A%84%E8%AE%B2%E8%BF%B0%E5%8E%9F%E7%90%86)/"/>
     <url>/Pages/2021/05/23/2021-5-23-%E5%8C%BA%E5%9D%97%E9%93%BE%E5%8E%9F%E7%90%86(%E7%BB%93%E5%90%88%E5%AE%9E%E9%99%85%E4%BE%8B%E5%AD%90%E8%BE%83%E8%AF%A6%E7%BB%86%E7%9A%84%E8%AE%B2%E8%BF%B0%E5%8E%9F%E7%90%86)/</url>
